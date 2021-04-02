@@ -1,0 +1,13 @@
+.container-page{
+	background-color:red;
+}
+
+.container-result{
+	padding: 20px 20px 0 20px;
+	background-color:#f9f9f9;
+}
+
+.not-found-container{
+	height:700px;
+	border:1px solid black;	
+}
