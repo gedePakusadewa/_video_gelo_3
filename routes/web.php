@@ -27,7 +27,7 @@ Route::get('/about', 'App\Http\Controllers\PublicController@get_AboutPage')->nam
 Route::get('/play/{videoID}', 'App\Http\Controllers\PublicController@get_VideoData')->name('play_page');
 Route::get('/like/{videoID}', 'App\Http\Controllers\PublicController@set_LikedVideo')->name('likedVideo');
 Route::get('/dislike/{videoID}', 'App\Http\Controllers\PublicController@set_DislikedVideo')->name('dislikedVideo');
-Route::get('/add-watch-later', 'App\Http\Controllers\PublicController@set_WatchLater');
+Route::post('/add-watch-later', 'App\Http\Controllers\PublicController@set_WatchLater');
 
 Route::prefix('/admin')->group(function(){
     Route::get('/home', 'App\Http\Controllers\AdminController@get_HomeAdmin')->name('home_admin');
@@ -43,6 +43,6 @@ Route::prefix('/admin')->group(function(){
 //ngai fungsi filter waktu pank waktu upload lebih sederhana ditampilkan
 //ngai fungi mempersingkat tampilan angka view, like dislike
 
-//lanjut caro solusi baris 55; adi ade masalah ajak header untuk ajax dgn POST method
+//lanjut caro solusi baris 55; adi ade masalah ajak header untuk ajax dgn POST method, coabk nganggo ajax versi jQuery
 
 //lanjut CSS : lanjut benerin search result CSS
