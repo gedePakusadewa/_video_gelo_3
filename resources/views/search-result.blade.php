@@ -42,8 +42,10 @@
 		@else
 			<div class = "not-found-container">
 				<div class = "error-not-found-message">
-					<h3>No results found</h3>
+					<img src = "icon-youtube/not-found-youtube.png">
+					<div style = "text-align:center;"><h3>No results found</h3>
 					<p>	Try different keywords</p>
+				</div>
 				</div>
 			</div>
 		@endif
