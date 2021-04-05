@@ -19,7 +19,7 @@
 				</div> 
 			--}}
 
-				<div class = "flex-row-container" onmouseover = "hoverIn(this)" 
+				<div class = "flex-row-container container-each-result" onmouseover = "hoverIn(this)" 
 				name = "{{$item['code']}}" onmouseout = "hoverOut(this)">
 					<div class = "">
 						<div id = "watch-later-{{$item['code']}}" name = "{{$item['code']}}" style = "position:relative; left:90%; display:none;">
@@ -31,7 +31,7 @@
 							<img src="{{$item['thumbnail_path']}}" class = "div-img-container" alt="tes-tiga" />
 						</a>
 					</div>
-					<div>
+					<div class = "container-each-desc">
 						<div id = "title-video" style = "">{{$item['name']}}</div>
 						<p>{{$item['view_sum']}} views | {{$item['created_at']}}</p>
 						<p>Admin</p>
@@ -41,7 +41,10 @@
 			@endforeach
 		@else
 			<div class = "not-found-container">
-				<h3>Sorry, but we can not find what you want. Please using another keyword.</h3>
+				<div class = "error-not-found-message">
+					<h3>No results found</h3>
+					<p>	Try different keywords</p>
+				</div>
 			</div>
 		@endif
 	</div>
