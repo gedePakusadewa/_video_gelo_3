@@ -21,7 +21,7 @@
 			</div>
 		@endforeach
 	</div>
-
+	<input id = "tokenAjax" type="hidden" name="_token" value="<?php echo csrf_token(); ?>" />
 
 	//<br /><button style = "height:50px; width:50px;" onclick = "tes1()">sdasd</button>
 
@@ -42,7 +42,14 @@
 
 		function addToWatchLater(data){
 		 	//src : https://www.w3schools.com/js/js_ajax_http_send.asp
-			var xmlhttp = new XMLHttpRequest();
+		 	var token = document.getElementById('tokenAjax').value;
+		 	console.log(token);
+			var xmlhttp = new XMLHttpRequest();			
+			xmlhttp.open("POST", "/add-watch-later", true);
+			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xmlhttp.setRequestHeader("X-CSRFToken", token);
+
+
 		    xmlhttp.onreadystatechange = function() {
 		    	if (this.readyState == 4 && this.status == 200) {
 		        	alert("sukses");
@@ -51,8 +58,6 @@
 		    // xmlhttp.open("GET", "/tes1", false);
 		    // xmlhttp.send();
 
-			xmlhttp.open("POST", "/add-watch-later", true);
-			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xmlhttp.send("code =" + data);
 
 		}

@@ -45,4 +45,4 @@ Route::prefix('/admin')->group(function(){
 
 //lanjut caro solusi baris 55; adi ade masalah ajak header untuk ajax dgn POST method, coabk nganggo ajax versi jQuery
 
-//lanjut CSS : lanjut benerin search result CSS
+//lanjut CSS : lanjut benerin search result CSS, pisahin class/id css yg nggak common ke CSS khusus search result aja
