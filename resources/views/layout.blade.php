@@ -15,6 +15,10 @@
 		        border:0;
 			}
 
+			body{
+				font-family: Roboto, sans-serif;
+			}
+
 			.flex-row-container{
 				display:flex;
 				flex-direction:row;
@@ -50,6 +54,7 @@
 				width:214px;
 				height:150px;
 				object-fit:cover;
+				border:1px solid black;
 			}
 
 			#logo-website-width{
@@ -164,6 +169,21 @@
 
 			.icon-float-left{
 				float:left;
+			}
+
+			.watch-later-container{
+				position:relative; 
+				left:85%; 
+				top:3%;
+				display:none;
+			}
+
+			.watch-later-icon-position{
+				position:absolute;
+				background-color:black;
+				color:white;
+				border-radius:2px;
+				padding:3px 1px 0px 3px;
 			}
 
 		</style>

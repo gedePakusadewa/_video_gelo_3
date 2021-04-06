@@ -53,4 +53,4 @@ Route::fallback(function(){
 //lanjut ngalih dan ngaisollusi error handling di controller
 //https://www.codecheef.org/article/laravel-error-handling-with-exception-and-try-catch
 
-//lanjut CSS : lanjut benerin search result CSS, pisahin class/id css yg nggak common ke CSS khusus search result aja
+//lanjut CSS : lanjut benerin posisi icon later dik, ngedit posisi watchltaer icon di home, edit ukuran font 

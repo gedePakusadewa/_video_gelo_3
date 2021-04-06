@@ -22,9 +22,9 @@
 				<div class = "flex-row-container container-each-result" onmouseover = "hoverIn(this)" 
 				name = "{{$item['code']}}" onmouseout = "hoverOut(this)">
 					<div class = "">
-						<div id = "watch-later-{{$item['code']}}" name = "{{$item['code']}}" style = "position:relative; left:90%; display:none;">
-							<div style = "position:absolute;">
-								<div style = "background-color:black;"><i class="material-icons" style = "color:white;">access_time</i></div>
+						<div id = "watch-later-{{$item['code']}}" name = "{{$item['code']}}" class = "watch-later-container">
+							<div class = "watch-later-icon-position">
+								<div><i class="material-icons" style = "">access_time</i></div>
 							</div>
 						</div>
 						<a href="{{route('play_page', ['videoID' => $item['code']])}}">
@@ -32,7 +32,7 @@
 						</a>
 					</div>
 					<div class = "container-each-desc">
-						<div id = "title-video" style = "">{{$item['name']}}</div>
+						<div id = "title-video">{{$item['name']}}</div>
 						<p>{{$item['view_sum']}} views | {{$item['created_at']}}</p>
 						<p>Admin</p>
 						<p>{{$item['simple_description']}}</p>
