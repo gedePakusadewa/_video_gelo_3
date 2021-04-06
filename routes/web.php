@@ -37,12 +37,20 @@ Route::prefix('/admin')->group(function(){
     Route::get('top-video-watch', 'App\Http\Controllers\AdminController@get_TopVideoWatch')->name('top_video_watch_admin');
 });
 
+Route::fallback(function(){
+	//https://laravel.com/docs/8.x/routing#fallback-routes
+    // return response()->json([
+    //     ' message' => 'Page Not Found. If error persists, contact info@website.com'], 404);
+    return view('error-page');
+});
+
 //cobak practice menampilkan video sendiri lewat element source car di sumber ne https://stackoverflow.com/questions/22974106/how-can-i-store-a-video-inside-a-database
 
 
 //ngai fungsi filter waktu pank waktu upload lebih sederhana ditampilkan
 //ngai fungi mempersingkat tampilan angka view, like dislike
 
-//lanjut caro solusi baris 55; adi ade masalah ajak header untuk ajax dgn POST method, coabk nganggo ajax versi jQuery
+//lanjut ngalih dan ngaisollusi error handling di controller
+//https://www.codecheef.org/article/laravel-error-handling-with-exception-and-try-catch
 
 //lanjut CSS : lanjut benerin search result CSS, pisahin class/id css yg nggak common ke CSS khusus search result aja
