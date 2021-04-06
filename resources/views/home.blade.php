@@ -21,9 +21,6 @@
 			</div>
 		@endforeach
 	</div>
-	<input id = "tokenAjax" type="hidden" name="_token" value="<?php echo csrf_token(); ?>" />
-
-	//<br /><button style = "height:50px; width:50px;" onclick = "tes1()">sdasd</button>
 
 	<script
 		  <!-- src="https://code.jquery.com/jquery-2.2.4.min.js"

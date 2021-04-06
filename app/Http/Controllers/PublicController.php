@@ -48,10 +48,10 @@ class PublicController extends Controller
     	return view('history', ['finalData' => $finalData]);
     }
     
-    public function get_WatchLaterData(){
+   /* public function get_WatchLaterData(){
     	return view('watch-later');
     }
-
+*/
     public function get_LikeVideoData(){
         $dataRaw = Liked_Video::orderBy('id', 'desc')->get();
         $finalData = array();
@@ -230,13 +230,23 @@ class PublicController extends Controller
     }
 
     public function set_WatchLater(){
-        // Video_List::where("code", "=", "kwolri") -> update(["tag" => $_POST['data1']]);
-        // return;
         WatchLater::create([
             'code_video' => $_POST['code']
         ]);
         return;
-        //return view('watch-later');
+    }
+
+    public function get_WatchLaterData(){
+        $dataRaw = WatchLater::orderBy('id', 'desc')->get();
+        $finalData = array();
+        $tmp = array();
+
+        foreach($dataRaw as $item){
+            $tmp = Video_List::where('code', '=', $item->code_video)->get()->toArray();
+            $finalData = array_merge($finalData, $tmp);
+        }
+
+        return view('watch-later', ['finalData' => $finalData]);
     }
 
 
