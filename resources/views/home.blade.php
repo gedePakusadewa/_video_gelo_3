@@ -7,7 +7,7 @@
 			name = "{{$item->code}}" onmouseout = "hoverOut(this)">
 				<div id = "watch-later-{{$item->code}}" name = "{{$item->code}}" style = "position:relative; left:90%; display:none;">
 					<div style = "position:absolute;">
-						<div style = "background-color:black;" onclick = "addToWatchLater(this.name)" name = "{{$item->code}}"><i class="material-icons" style = "color:white;">access_time</i></div>
+						<div id = "tes123" style = "background-color:black;" onclick = "addToWatchLater(this)" name = "{{$item->code}}"><i class="material-icons" style = "color:white;">access_time</i></div>
 					</div>
 				</div>
 				<a href="{{route('play_page', ['videoID' => $item -> code])}}">
@@ -41,48 +41,43 @@
 		}	
 
 		function addToWatchLater(data){
-		 	//src : https://www.w3schools.com/js/js_ajax_http_send.asp
-		 	var token = document.getElementById('tokenAjax').value;
-		 	console.log(token);
-			var xmlhttp = new XMLHttpRequest();			
-			xmlhttp.open("POST", "/add-watch-later", true);
-			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xmlhttp.setRequestHeader("X-CSRFToken", token);
+			$.ajax({
+			    url: '/add-watch-later',
+			    type: 'POST',
+			    data: { 
+			    	_token: '{{ csrf_token() }}',
+			    	code : '' + data.getAttribute("name")
+			    },
 
-
-		    xmlhttp.onreadystatechange = function() {
-		    	if (this.readyState == 4 && this.status == 200) {
-		        	alert("sukses");
-		      	}
-		    };
-		    // xmlhttp.open("GET", "/tes1", false);
-		    // xmlhttp.send();
-
-			xmlhttp.send("code =" + data);
-
+			    success:function(){alert('success!');},
+			    error: function(){alert('error');}, 
+			});
 		}
-	
-		/*
-		https://stackoverflow.com/questions/48231432/simple-ajax-in-laravel
-		(function ($) {
-	        $(document).ready(function() {
 
-	            $('#notifications').on('click', function() {
+		// function addToWatchLater(data){
+			
+		//  	//src : https://www.w3schools.com/js/js_ajax_http_send.asp
+		//  	var token = document.getElementById('tokenAjax').value;
+		//  	console.log(token);
+		// 	var xmlhttp = new XMLHttpRequest();			
+		// 	xmlhttp.open("POST", "/add-watch-later", true);
+		// 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		// 	xmlhttp.setRequestHeader("X-CSRFToken", token);
 
-	            $.ajax({
-	                url: '/tes1',
-	                type: 'POST',
-	                data: { _token: '{{ csrf_token() }}' },
-	                success:function(){alert('success!');},
-	                error: function (){alert('error');}, 
-	            });
 
-	            });
+		//     xmlhttp.onreadystatechange = function() {
+		//     	if (this.readyState == 4 && this.status == 200) {
+		//         	alert("sukses");
+		//       	}
+		//     };
+		//     // xmlhttp.open("GET", "/tes1", false);
+		//     // xmlhttp.send();
 
-	        });
-        }(jQuery));
-		*/
+		// 	xmlhttp.send("code =" + data);
 
+		// }
 		
+
+				
 	</script>
 @endsection

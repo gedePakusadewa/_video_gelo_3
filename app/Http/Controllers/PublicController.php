@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Video_List;
 use App\Models\History_user;
 use App\Models\Liked_Video;
+use App\Models\WatchLater;
 //use Illuminate\Database\Eloquent\Builder::all();
 
 class PublicController extends Controller
@@ -229,7 +230,11 @@ class PublicController extends Controller
     }
 
     public function set_WatchLater(){
-        Video_List::where("code", "=", "kwolri") -> update(["dislike_sum" => 189]);
+        // Video_List::where("code", "=", "kwolri") -> update(["tag" => $_POST['data1']]);
+        // return;
+        WatchLater::create([
+            'code_video' => $_POST['code']
+        ]);
         return;
         //return view('watch-later');
     }
