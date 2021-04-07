@@ -50,7 +50,6 @@ Route::fallback(function(){
 //ngai fungsi filter waktu pank waktu upload lebih sederhana ditampilkan
 //ngai fungi mempersingkat tampilan angka view, like dislike
 
-//lanjut ngalih dan ngaisollusi error handling di controller
-//https://www.codecheef.org/article/laravel-error-handling-with-exception-and-try-catch
+//lanjut ngai error handling di app.exception uli laravel resmi
 
 //lanjut CSS : lanjut benerin posisi icon later dik, ngedit posisi watchltaer icon di home, edit ukuran font 
