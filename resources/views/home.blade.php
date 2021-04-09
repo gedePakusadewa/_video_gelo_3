@@ -1,13 +1,15 @@
 @extends('layout')
 
 @section('content')
-	<div style = "background-color:#f9f9f9;" class="flex-row-container-wrap">
+	<div class="flex-row-container-wrap basic-content-bg-color">
 		@foreach($data as $item)
 			<div class = "thumbnail-container" onmouseover = "hoverIn(this)" 
 			name = "{{$item->code}}" onmouseout = "hoverOut(this)">
-				<div id = "watch-later-{{$item->code}}" name = "{{$item->code}}" style = "position:relative; left:90%; display:none;">
-					<div style = "position:absolute;">
-						<div id = "tes123" style = "background-color:black;" onclick = "addToWatchLater(this)" name = "{{$item->code}}"><i class="material-icons" style = "color:white;">access_time</i></div>
+				<div id = "watch-later-{{$item->code}}" name = "{{$item->code}}" class = "watch-later-container">
+					<div class = "watch-later-icon-position">
+						<div id = "tes123" onclick = "addToWatchLater(this)" name = "{{$item->code}}">
+							<i class="material-icons" style = "color:white;">access_time</i>
+						</div>
 					</div>
 				</div>
 				<a href="{{route('play_page', ['videoID' => $item -> code])}}">

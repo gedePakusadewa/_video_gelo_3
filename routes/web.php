@@ -50,6 +50,6 @@ Route::fallback(function(){
 //ngai fungsi filter waktu pank waktu upload lebih sederhana ditampilkan
 //ngai fungi mempersingkat tampilan angka view, like dislike
 
-//lanjut ngai error handling di app.exception uli laravel resmi
+//lanjut controller line 136
 
-//lanjut CSS : lanjut benerin posisi icon later dik, ngedit posisi watchltaer icon di home, edit ukuran font 
+//lanjut CSS : lanjut ngai fitur tombol berwarna ketika diklik care di home youtube

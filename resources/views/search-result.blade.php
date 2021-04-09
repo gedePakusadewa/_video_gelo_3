@@ -4,24 +4,8 @@
 	<div class = "container-result">
 		@if(!empty($result))
 			@foreach($result as $item)
-			{{-- 	
-				<div class = "thumbnail-container flex-row-container">
+				<div class = "flex-row-container container-each-result" onmouseover = "hoverIn(this)" name = "{{$item['code']}}" onmouseout = "hoverOut(this)">
 					<div>
-						<a href="{{route('play_page', ['videoID' => $item['code']])}}">
-							<img src="{{$item['thumbnail_path']}}" class = "div-img-container" alt="tes-tiga" />
-						</a>
-					</div>
-					<div>
-						<div id = "title-video" style = "display:flex; width:190px; flex-wrap:wrap;">{{$item['name']}}</div>
-						<p>Admin</p>
-						<p>{{$item['view_sum']}} views | {{$item['created_at']}}</p>
-					</div>
-				</div> 
-			--}}
-
-				<div class = "flex-row-container container-each-result" onmouseover = "hoverIn(this)" 
-				name = "{{$item['code']}}" onmouseout = "hoverOut(this)">
-					<div class = "">
 						<div id = "watch-later-{{$item['code']}}" name = "{{$item['code']}}" class = "watch-later-container">
 							<div class = "watch-later-icon-position">
 								<div><i class="material-icons" style = "">access_time</i></div>

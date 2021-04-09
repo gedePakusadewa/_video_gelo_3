@@ -54,7 +54,6 @@
 				width:214px;
 				height:150px;
 				object-fit:cover;
-				border:1px solid black;
 			}
 
 			#logo-website-width{
@@ -146,6 +145,7 @@
 			.side-menu a:link, .side-menu a:visited, .side-menu a:hover, .side-menu a:active {
 				color:black;
 				text-decoration:none;
+				font-size:17px;
 			}
 
 			.icon{
@@ -183,7 +183,19 @@
 				background-color:black;
 				color:white;
 				border-radius:2px;
-				padding:3px 1px 0px 3px;
+				padding:3px 2px 0px 3px;
+			}
+
+			.basic-content-bg-color{
+				background-color:#f9f9f9;
+			}
+
+			.font-size-side-menu{
+				font-size:17px;
+			}
+
+			.onclick-side-menu{
+				background-color:#e5e5e5;
 			}
 
 		</style>
@@ -212,7 +224,7 @@
 		</nav>
 		<div class="flex-row-container">
 			<div class = "side-menu">
-				<div class = "icon-side-menu">
+				<div id = "home-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">home</i>
 					<a href="{{route('home')}}">Home</a>
 				</div>
@@ -249,4 +261,17 @@
 			</div>
 		</div>
 	</body>
+
+	<script>
+		var home = document.getElementById('home-side-menu');
+		home.onmouseover = function(){
+			home.classList.add("onclick-side-menu");
+		};
+		home.onmouseout = function(){
+			home.classList.remove("onclick-side-menu");
+		};
+
+
+		
+	</script>
 </html>
