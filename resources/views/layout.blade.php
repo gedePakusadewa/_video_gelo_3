@@ -163,7 +163,7 @@
 			}
 
 			.icon-side-menu{
-				margin: 23px 0 10px 0;
+				padding: 11px 0 10px 0;
 				font-size:18px;
 			}
 
@@ -228,27 +228,27 @@
 					<i class="material-icons sideLogoIcon icon-float-left">home</i>
 					<a href="{{route('home')}}">Home</a>
 				</div>
-				<div class = "icon-side-menu">
+				<div id = "trending-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">explore</i>
 					<a href="{{route('trending_page')}}">Trending</a>
 				</div>
-				<div class = "icon-side-menu">
+				<div id = "history-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">history</i>
 					<a href="{{route('history_page')}}">History</a>
 				</div>
-				<div class = "icon-side-menu">
+				<div id = "watch-later-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">access_time</i>
 					<a href="{{route('watch_later_page')}}">Watch Later</a>
 				</div>
-				<div class = "icon-side-menu">
+				<div id = "liked-video-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">thumb_up</i>
 					<a href="{{route('like_video_page')}}">Liked Video</a>
 				</div>
-				<div class = "icon-side-menu">
+				<div id = "settings-video-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">settings</i>
 					<a href="{{route('settings_page')}}">Settings</a>
 				</div>
-				<div class = "icon-side-menu">
+				<div id = "about-video-side-menu" class = "icon-side-menu">
 					<i class="fa fa-address-card-o sideLogoIcon icon-float-left"></i>
 					<a href="{{route('about_page')}}">About</a>
 				</div>
@@ -271,7 +271,53 @@
 			home.classList.remove("onclick-side-menu");
 		};
 
+		var trending = document.getElementById('trending-side-menu');
+		trending.onmouseover = function(){
+			trending.classList.add("onclick-side-menu");
+		};
+		trending.onmouseout = function(){
+			trending.classList.remove("onclick-side-menu");
+		};
 
-		
+		var history_el = document.getElementById('history-side-menu');
+		history_el.onmouseover = function(){
+			history_el.classList.add("onclick-side-menu");
+		};
+		history_el.onmouseout = function(){
+			history_el.classList.remove("onclick-side-menu");
+		};
+
+		var watch_later = document.getElementById('watch-later-side-menu');
+		watch_later.onmouseover = function(){
+			watch_later.classList.add("onclick-side-menu");
+		};
+		watch_later.onmouseout = function(){
+			watch_later.classList.remove("onclick-side-menu");
+		};
+
+		var liked_video = document.getElementById('liked-video-side-menu');
+		liked_video.onmouseover = function(){
+			liked_video.classList.add("onclick-side-menu");
+		};
+		liked_video.onmouseout = function(){
+			liked_video.classList.remove("onclick-side-menu");
+		};
+
+		var settings = document.getElementById('settings-video-side-menu');
+		settings.onmouseover = function(){
+			settings.classList.add("onclick-side-menu");
+		};
+		settings.onmouseout = function(){
+			settings.classList.remove("onclick-side-menu");
+		};
+
+		var about = document.getElementById('about-video-side-menu');
+		about.onmouseover = function(){
+			about.classList.add("onclick-side-menu");
+		};
+		about.onmouseout = function(){
+			about.classList.remove("onclick-side-menu");
+		};
+
 	</script>
 </html>
