@@ -30,6 +30,8 @@ class Video_List extends Model
         return Video_List::where($code, "=", $dataID) -> update([$updatedColumn => $dataUpdated]);
     }
 
+
+
     static function addDataSample(){
         $code = "dpeb78";
         $name = "Ambassador21 - We Are Legion (Matt Green Remix) Love Death Robots OST";

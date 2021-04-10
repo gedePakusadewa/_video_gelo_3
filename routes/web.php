@@ -50,6 +50,6 @@ Route::fallback(function(){
 //ngai fungsi filter waktu pank waktu upload lebih sederhana ditampilkan
 //ngai fungi mempersingkat tampilan angka view, like dislike
 
-//lanjut controller line 136
+//lanjut controller line 25
 
-//lanjut CSS : lanjut ngai fitur tombol berwarna ketika diklik care di home youtube
+//lanjut CSS : lanjut ngai dibawah feedback, ngai kolom bagian iklan, edit description video pank ngidang ngejion logo content creator, hapus about

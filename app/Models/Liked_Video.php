@@ -19,4 +19,12 @@ class Liked_Video extends Model
         return Liked_Video::get();
     }
 
+    static function addData($code){
+        return Liked_Video::create(['code_video' => $code ]);
+    }
+
+    static function deleteData($videoID){
+        return Liked_Video::where("code_video", "=", $videoID) -> delete();
+    }
+
 }

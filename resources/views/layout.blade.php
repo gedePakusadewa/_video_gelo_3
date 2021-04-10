@@ -224,18 +224,41 @@
 		</nav>
 		<div class="flex-row-container">
 			<div class = "side-menu">
-				<div id = "home-side-menu" class = "icon-side-menu">
-					<i class="material-icons sideLogoIcon icon-float-left">home</i>
-					<a href="{{route('home')}}">Home</a>
-				</div>
-				<div id = "trending-side-menu" class = "icon-side-menu">
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="material-icons sideLogoIcon icon-float-left">home</i>
+						Home
+					</div>
+				</a>
+				<div id = "explore-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">explore</i>
-					<a href="{{route('trending_page')}}">Trending</a>
+					<a href="{{route('trending_page')}}">Explore</a>
 				</div>
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="material-icons sideLogoIcon icon-float-left">subscriptions</i>
+						XXSubscriptions
+					</div>
+				</a>
+				
+				<hr style = "height:10px; background-color:red;" />
+
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="material-icons sideLogoIcon icon-float-left">video_library</i>
+						XXLibrary
+					</div>
+				</a>				
 				<div id = "history-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">history</i>
 					<a href="{{route('history_page')}}">History</a>
 				</div>
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="material-icons sideLogoIcon icon-float-left">ondemand_video</i>
+						XXYour Video
+					</div>
+				</a>
 				<div id = "watch-later-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">access_time</i>
 					<a href="{{route('watch_later_page')}}">Watch Later</a>
@@ -244,10 +267,84 @@
 					<i class="material-icons sideLogoIcon icon-float-left">thumb_up</i>
 					<a href="{{route('like_video_page')}}">Liked Video</a>
 				</div>
+				
+				<hr style = "height:10px; background-color:red;" />
+
+				<p>SUBSCRPTIONS</p>
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="material-icons sideLogoIcon icon-float-left">add_circle</i>
+						XXBrowse Channels
+					</div>
+				</a>
+				
+				<hr style = "height:10px; background-color:red;" />
+
+				<p>More From Youtube</p>
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<!-- <i class="material-icons sideLogoIcon icon-float-left">you_tube</i> -->
+						<i class="fa fa-youtube-play sideLogoIcon icon-float-left"></i>
+						XXYoutube Premium
+					</div>
+				</a>
+
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="material-icons sideLogoIcon icon-float-left">local_movies</i>
+						XXMovies
+					</div>
+				</a>
+
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="material-icons sideLogoIcon icon-float-left">videogame_asset</i>
+						XXGaming
+					</div>
+				</a>
+
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="material-icons sideLogoIcon icon-float-left">wifi_tethering</i>
+						XXLive
+					</div>
+				</a>
+
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+						<i class="fa fa-trophy sideLogoIcon icon-float-left"></i>
+						XXSports
+					</div>
+				</a>
+				
+				<hr style = "height:10px; background-color:red;" />
+				
 				<div id = "settings-video-side-menu" class = "icon-side-menu">
 					<i class="material-icons sideLogoIcon icon-float-left">settings</i>
 					<a href="{{route('settings_page')}}">Settings</a>
 				</div>
+
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+					<i class="material-icons sideLogoIcon icon-float-left">flag</i>
+						XXReport history
+					</div>
+				</a>
+
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+					<i class="material-icons sideLogoIcon icon-float-left">help</i>
+						XXHelp
+					</div>
+				</a>
+
+				<a href="{{route('home')}}">
+					<div id = "home-side-menu" class = "icon-side-menu">
+					<i class="material-icons sideLogoIcon icon-float-left">feedback</i>
+						XXSend feedback
+					</div>
+				</a>
+
 				<div id = "about-video-side-menu" class = "icon-side-menu">
 					<i class="fa fa-address-card-o sideLogoIcon icon-float-left"></i>
 					<a href="{{route('about_page')}}">About</a>
@@ -271,12 +368,12 @@
 			home.classList.remove("onclick-side-menu");
 		};
 
-		var trending = document.getElementById('trending-side-menu');
-		trending.onmouseover = function(){
-			trending.classList.add("onclick-side-menu");
+		var explore = document.getElementById('explore-side-menu');
+		explore.onmouseover = function(){
+			explore.classList.add("onclick-side-menu");
 		};
-		trending.onmouseout = function(){
-			trending.classList.remove("onclick-side-menu");
+		explore.onmouseout = function(){
+			explore.classList.remove("onclick-side-menu");
 		};
 
 		var history_el = document.getElementById('history-side-menu');

@@ -7,13 +7,23 @@ use App\Models\Video_List;
 use App\Models\History_user;
 use App\Models\Liked_Video;
 use App\Models\WatchLater;
+use Illuminate\Support\Str;
 //use Illuminate\Database\Eloquent\Builder::all();
 
 class PublicController extends Controller
 { 
     public function get_HomeData(){
-        return view('home', ['data' => Video_List::get_AllVideoListData()]);
+        $data = Video_List::get_AllVideoListData();
+        foreach($data as $item){
+            //to shorten video title character
+            $item->name = Str::limit($item->name, 40);
+            $item->created_at = $item->created_at->format('Y-m-d');
+        }   
+        return view('home', ['data' => $data]);
     }
+
+    //lanjut memisahkan fungsi shorten title video ajak conversi date menjadi function terpisah
+    //lanjut ngai page admin and the rest of admin things
 
     public function get_TrendingData(){
         return view('trending', ['data' => Video_List::getDataByOrder('view_sum', 'asc')]);
@@ -22,41 +32,24 @@ class PublicController extends Controller
 
     public function get_HistoryData(){        
         $finalData = array();
-        $tmp = array();
 
         foreach(History_user::getAllHistoryData() as $item){
-            $tmp = Video_List::getSpecificData('code', $item->code_video)->toArray();
-            $finalData = array_merge($finalData, $tmp);
+            $finalData = array_merge($finalData, Video_List::getSpecificData('code', $item->code_video)->toArray());
         }
 
         //lanjut mengedit bagianne sesuai neh https://github.com/alexeymezenin/laravel-best-practices#fat-models-skinny-controllers
 
-        //var_dump(count($tes));
-   /*     for($i = 0; $i < count($tes); $i++){
-            foreach($tes[$i] as $value){
-                echo $value."<br />";
-            }
-            echo "<br />";
-        } */
-
-        /*foreach($tes as $key){
-            echo $key['code'];
-            echo "<br />";
-        } */
     	return view('history', ['finalData' => $finalData]);
     }
     
     public function get_LikeVideoData(){
         $finalData = array();
-        $tmp = array();
 
         foreach(Liked_Video::getDataByOrder('id', 'desc') as $item){
-            $tmp = Video_List::getSpecificData('code', $item->code_video)->toArray();
-            $finalData = array_merge($finalData, $tmp);
+            $finalData = array_merge($finalData, Video_List::getSpecificData('code', $item->code_video)->toArray());
         }
 
     	return view('like-video', ['finalData' => $finalData]);
-        //$this->adding_liked_video_data();
     }
 
     public function get_SearchResultData(Request $request){
@@ -100,14 +93,6 @@ class PublicController extends Controller
         //nanti tambah line untuk megnecek apakah ada error atao enggak trus kasi error message ke view
     }
 
-    private function adding_liked_video_data($code){
-        //$code = "zlayhe";
-
-        Liked_Video::create([
-            'code_video' => $code
-        ]);
-    }
-
     public function set_LikedVideo($videoID){       
 
         if(!$this->isLikedByUser($videoID)){
@@ -120,41 +105,35 @@ class PublicController extends Controller
     }
 
     private function isLikedByUser($videoID){
-        $status = false;
         foreach(Liked_Video::getAllData() as $value){
             if($videoID === $value->code_video){
-                $status = true;
-                break;
+               return true;
             }
         }
-        return $status;
+        return false;
     }
 
     private function setTotalLikedVideo($videoID, $totalLike, $totalDislike){
-        //Video_List::where("code", "=", $videoID) -> update(["like_sum" => ((int)$totalLike + 1)]);
+ 
         Video_List::updateData('code', $videoID, 'like_sum', ((int)$totalLike + 1));
-        //lanjut beberes functionne, lanjut ganti/hilangkan baris yg bisa dioptinalkan
+
         if((int)$totalDislike > 0){
-            Video_List::where("code", "=", $videoID) -> update(["dislike_sum" => ((int)$totalDislike - 1)]);
+            Video_List::updateData('code', $videoID, 'dislike_sum', ((int)$totalDislike - 1));
         }
 
-        $this->adding_liked_video_data($videoID);
+        Liked_Video::addData($videoID);
         //nanti tambah line untk mencek apkah data sudah masuk atau belum, jika belum apa yg harus dilakukan
     }
 
     private function get_VideoDataLiked($videoID){
-        $data = Video_List::where("code", "=", $videoID)->get();
-
-        return view('video_play_page', ['data' => $data]);
-
+        return view('video_play_page', ['data' => Video_List::getSpecificData("code", $videoID)]);
         //nanti tambah line untuk megnecek apakah ada error atao enggak trus kasi error message ke view
     }
 
     public function set_DislikedVideo($videoID){
-        if($this->isLikedByThisUser($videoID)){
-            Liked_Video::where("code_video", "=", $videoID) -> delete();
-            $data = Video_List::where("code", "=", $videoID)->get();
-            foreach($data as $item){
+        if($this->isLikedByUser($videoID)){
+            Liked_Video::deleteData($videoID);
+            foreach(Video_List::getSpecificData("code", $videoID) as $item){
                 $this->setTotalDislikedVideo($videoID, $item->like_sum, $item->dislike_sum);
             }
         }
@@ -162,31 +141,25 @@ class PublicController extends Controller
     }
 
     private function setTotalDislikedVideo($videoID, $totalLike, $totalDislike){
-        Video_List::where("code", "=", $videoID) -> update(["dislike_sum" => ((int)$totalDislike + 1)]);
+        Video_List::updateData('code', $videoID, 'dislike_sum', ((int)$totalDislike + 1));
         
         if((int)$totalLike > 0){
-            Video_List::where("code", "=", $videoID) -> update(["like_sum" => ((int)$totalLike - 1)]);
+            Video_List::updateData('code', $videoID, 'like_sum', ((int)$totalLike - 1));
         }
         //nanti tambah line untk mencek apkah data sudah masuk atau belum, jika belum apa yg harus dilakukan
     }
 
     public function set_WatchLater(){
-        WatchLater::create([
-            'code_video' => $_POST['code']
-        ]);
+        WatchLater::addData('code_video', $_POST['code']);
         return;
     }
 
     public function get_WatchLaterData(){
-        $dataRaw = WatchLater::orderBy('id', 'desc')->get();
         $finalData = array();
-        $tmp = array();
 
-        foreach($dataRaw as $item){
-            $tmp = Video_List::where('code', '=', $item->code_video)->get()->toArray();
-            $finalData = array_merge($finalData, $tmp);
+        foreach(WatchLater::getDataByOrder('id', 'desc') as $item){
+            $finalData = array_merge($finalData, Video_List::getSpecificData('code', $item->code_video)->toArray());
         }
-
         return view('watch-later', ['finalData' => $finalData]);
     }
 
