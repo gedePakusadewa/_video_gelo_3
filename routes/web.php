@@ -36,7 +36,7 @@ Route::prefix('/admin')->group(function(){
     Route::get('/top-video-dislike', 'App\Http\Controllers\AdminController@get_TopVideoDislike')->name('top_video_dislike_admin');
     Route::get('top-video-watch', 'App\Http\Controllers\AdminController@get_TopVideoWatch')->name('top_video_watch_admin');
     Route::get('/new-video', function(){
-        return view('admin.new-video-form');
+        return view('admin.create-new-video');
     })->name('create_new_video_page');
 });
 
@@ -53,7 +53,7 @@ Route::fallback(function(){
 //ngai fungsi filter waktu pank waktu upload lebih sederhana ditampilkan
 //ngai fungi mempersingkat tampilan angka view, like dislike
 
-//lanjut controller line 52
+//lanjut membuat element upload video admin and then try to upload it and test if its save or not in DB
 
 //lanjut CSS : lanjut ngai dibawah feedback, ngai kolom bagian iklan, edit description video pank ngidang ngejion logo content creator, hapus about
 

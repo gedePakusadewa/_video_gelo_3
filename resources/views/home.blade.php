@@ -18,7 +18,7 @@
 				<div>
 					<div id = "title-video" style = "display:flex; width:190px; flex-wrap:wrap;">{{$item->name}}</div>
 					<p>Admin</p>
-					<p>{{$item->view_sum}} views | {{$item->how_its_uploaded}}</p>
+					<p>{{$item->view_sum}} views | {{$item->when_its_uploaded}}</p>
 				</div>
 			</div>
 		@endforeach
