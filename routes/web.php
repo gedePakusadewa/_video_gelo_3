@@ -35,6 +35,9 @@ Route::prefix('/admin')->group(function(){
     Route::get('/top-video-like', 'App\Http\Controllers\AdminController@get_TopVideoLikeData')->name('top_video_like_admin');
     Route::get('/top-video-dislike', 'App\Http\Controllers\AdminController@get_TopVideoDislike')->name('top_video_dislike_admin');
     Route::get('top-video-watch', 'App\Http\Controllers\AdminController@get_TopVideoWatch')->name('top_video_watch_admin');
+    Route::get('/new-video', function(){
+        return view('admin.new-video-form');
+    })->name('create_new_video_page');
 });
 
 Route::fallback(function(){
@@ -53,3 +56,5 @@ Route::fallback(function(){
 //lanjut controller line 52
 
 //lanjut CSS : lanjut ngai dibawah feedback, ngai kolom bagian iklan, edit description video pank ngidang ngejion logo content creator, hapus about
+
+//tambahan CSS change created at desc in another page video with when_its_uploaded

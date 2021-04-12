@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Video_List;
 
 class AdminController extends Controller
 {
@@ -11,7 +12,7 @@ class AdminController extends Controller
     }
 
     public function get_CudData(){
-    	return view('admin.cud-video-admin');
+    	return view('admin.cud-video-admin', ['data' => Video_List::get_AllVideoListData()]);
     }
 
     public function get_TopVideoLikeData(){

@@ -8,24 +8,11 @@ use App\Models\History_user;
 use App\Models\Liked_Video;
 use App\Models\WatchLater;
 use Illuminate\Support\Str;
-//use Illuminate\Database\Eloquent\Builder::all();
 
 class PublicController extends Controller
 { 
     public function get_HomeData(){
         $data = $this->getShortenTitle(Video_List::get_AllVideoListData());
-
-        // $totalDuration = "";
-        // foreach($data as $item){
-        //     //to shorten video title character
-        //     //$item->name = Str::limit($item->name, 40);
-        //     //$item->created_at = $item->created_at->format('d/m/Y');
-        //     $startTime = $item->created_at;
-        //     $finishTime = \Carbon\Carbon::now();
-
-        //     $totalDuration = $finishTime->diffForHumans($startTime);
-        // }   
-        // echo $totalDuration;
         return view('home', ['data' => $this->getHowLongUploadedVideo($data)]);
     }
 
@@ -42,13 +29,10 @@ class PublicController extends Controller
             $totalDuration = \Carbon\Carbon::now()->diffForHumans($item->created_at);
 
             //https://stackoverflow.com/questions/40171556/how-to-add-new-value-in-collection-laravel
-            $item->how_its_uploaded =  Str::of($totalDuration)->replace('after', 'ago');
+            $item->when_its_uploaded =  Str::of($totalDuration)->replace('after', 'ago');
         } 
         return $data;
     }
-
-    //lanjut memisahkan fungsi shorten title video ajak conversi date menjadi function terpisah
-    //lanjut ngai page admin and the rest of admin things
 
     public function get_TrendingData(){
         return view('trending', ['data' => Video_List::getDataByOrder('view_sum', 'asc')]);
