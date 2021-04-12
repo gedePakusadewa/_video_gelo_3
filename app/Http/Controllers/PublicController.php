@@ -13,13 +13,38 @@ use Illuminate\Support\Str;
 class PublicController extends Controller
 { 
     public function get_HomeData(){
-        $data = Video_List::get_AllVideoListData();
+        $data = $this->getShortenTitle(Video_List::get_AllVideoListData());
+
+        // $totalDuration = "";
+        // foreach($data as $item){
+        //     //to shorten video title character
+        //     //$item->name = Str::limit($item->name, 40);
+        //     //$item->created_at = $item->created_at->format('d/m/Y');
+        //     $startTime = $item->created_at;
+        //     $finishTime = \Carbon\Carbon::now();
+
+        //     $totalDuration = $finishTime->diffForHumans($startTime);
+        // }   
+        // echo $totalDuration;
+        return view('home', ['data' => $this->getHowLongUploadedVideo($data)]);
+    }
+
+    private function getShortenTitle($data){
         foreach($data as $item){
             //to shorten video title character
             $item->name = Str::limit($item->name, 40);
-            $item->created_at = $item->created_at->format('Y-m-d');
-        }   
-        return view('home', ['data' => $data]);
+        }
+        return $data;   
+    }
+
+    private function getHowLongUploadedVideo($data){
+        foreach($data as $item){
+            $totalDuration = \Carbon\Carbon::now()->diffForHumans($item->created_at);
+
+            //https://stackoverflow.com/questions/40171556/how-to-add-new-value-in-collection-laravel
+            $item->how_its_uploaded =  Str::of($totalDuration)->replace('after', 'ago');
+        } 
+        return $data;
     }
 
     //lanjut memisahkan fungsi shorten title video ajak conversi date menjadi function terpisah
