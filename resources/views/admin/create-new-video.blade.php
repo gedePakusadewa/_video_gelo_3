@@ -2,7 +2,7 @@
 
 @section('content')
 	<h3>Form New Video</h3>
-	<form name="inputArticleForm" onsubmit="return validateDataForm()" action = "#" method="post" enctype="multipart/form-data">
+	<form name="inputArticleForm" action = "{{route('save_video')}}" method="post" enctype="multipart/form-data">
 
 	    <input type = "hidden" name = "_token" 
 	        value = "<?php echo csrf_token(); ?>" />                   
@@ -43,13 +43,24 @@
 
 	    <div class="form-group">
 	        <label for="">Video Thumbnail:</label>
-	        <div id="alertFileFormat" class="alert alert-danger">
+	        <!-- <div id="alertFileFormat" class="alert alert-danger">
 	            <strong>Wrong image format!</strong> Please upload file having extensions .jpeg or .jpg or .png only.
 	        </div>
 	        <div id="alertFileSize" class="alert alert-danger">
 	            <strong>Wrong image Size!</strong> Please upload image size under 1Mb.
+	        </div> -->
+	        <input type='file' class="form-control" name="videoThumbnail" />
+	    </div>
+
+		<div class="form-group">
+	        <label for="">Video File:</label>
+	        <!-- <div id="alertFileFormat" class="alert alert-danger">
+	            <strong>Wrong image format!</strong> Please upload file having extensions .jpeg or .jpg or .png only.
 	        </div>
-	        <input type='file' id="idFile" class="form-control" name="videoThumbnail" />
+	        <div id="alertFileSize" class="alert alert-danger">
+	            <strong>Wrong image Size!</strong> Please upload image size under 1Mb.
+	        </div> -->
+	        <input type='file'  class="form-control" name="videoFile" />
 	    </div>
 
 	    <input type="submit" class="btn btn-primary" value ="Save Article" />

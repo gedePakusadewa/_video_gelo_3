@@ -11,6 +11,8 @@
 			<th>View Sum</th>
 			<th>Duration</th>
 			<th>Tag</th>
+			<th>Update</th>
+			<th>Delete</th>
 		</tr>
 		@foreach($data as $item)
 			<tr>
@@ -21,6 +23,8 @@
 				<td>{{$item->view_sum}}</td>
 				<td>{{$item->duration}}</td>
 				<td>{{$item->tag}}</td>
+				<td><a href = "{{route('update_video_page', ['codeVideo' => $item->code])}}"><button>Update Video</button></a></td>
+				<td><a href = "{{route('delete_video', ['codeVideo' => $item->code])}}"><button>Delete</button></a></td>
 			</tr>
 		@endforeach
 

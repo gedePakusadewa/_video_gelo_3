@@ -38,6 +38,10 @@ Route::prefix('/admin')->group(function(){
     Route::get('/new-video', function(){
         return view('admin.create-new-video');
     })->name('create_new_video_page');
+    Route::post('/save-video', 'App\Http\Controllers\AdminController@setNewVideo')->name('save_video');
+    Route::get('/update-video-form/{codeVideo}', 'App\Http\Controllers\AdminController@getUpdateVideoPage')->name('update_video_page');
+    Route::post('/update-video-form', 'App\Http\Controllers\AdminController@setNewUpdateVideo')->name('update_video');
+    Route::get('/delete-video/{codeVideo}', 'App\Http\Controllers\AdminController@setDeleteVideoData')->name('delete_video');
 });
 
 Route::fallback(function(){
@@ -55,6 +59,6 @@ Route::fallback(function(){
 
 //lanjut membuat element upload video admin and then try to upload it and test if its save or not in DB
 
-//lanjut CSS : lanjut ngai dibawah feedback, ngai kolom bagian iklan, edit description video pank ngidang ngejion logo content creator, hapus about
+//lanjut CSS : lanjut ngai dibawah feedback, ngai kolom bagian iklan, edit description video pank ngidang ngejion logo content creator, hapus about, tambah bagian durasi waktu. 
 
 //tambahan CSS change created at desc in another page video with when_its_uploaded
